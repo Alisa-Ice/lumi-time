@@ -1,4 +1,4 @@
-const C='lumi-3-6';
+const C='lumi-3-7';
 self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(['./','./index.html','./manifest.webmanifest','./icon.png'].map(u=>new Request(u,{cache:'reload'}))))));
 self.addEventListener('message',e=>{if(e.data==='ACTIVATE_UPDATE')self.skipWaiting()});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('lumi-')&&k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
